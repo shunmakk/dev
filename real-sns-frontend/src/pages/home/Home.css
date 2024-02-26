@@ -2,4 +2,13 @@
     display: flex;
     width: 100%;
     background-color: #f8fcff;
+    flex-direction: row;
+}
+
+
+@media screen and (max-width:768px){
+    .homeContainer{
+        display: flex;
+        flex-direction: column;
+    }
 }
