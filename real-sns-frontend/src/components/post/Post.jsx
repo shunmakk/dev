@@ -2,17 +2,20 @@ import React from 'react'
 import './Post.css'
 import { MoreVert } from '@mui/icons-material'
 
-const Post = () => {
+const Post = ({post}) => {
+    console.log(post)
   return (
     <div className='post'>
         <div className='postWrapper'>
             <div className='postTop'>
-                <img src="/assets/person/6.jpeg" alt="" classname="postProfileImg"/>
+              <div className='postTopleft'>
+                <img src="/assets/person/6.jpeg" alt="" className="postProfileImg"/>
                 <span className='postUsername'>野島</span>
                 <span className='postDate'>5分前</span>
             </div>
-            <div className='postRight'>
+            <div className='postTopRight'>
                 <MoreVert/>
+            </div>
             </div>
             <div className='postCenter'>
                 <span className='postText'>SNS嫌い</span>
@@ -24,7 +27,6 @@ const Post = () => {
                     <span className='postlikeCounter'>5人がいいね押しました</span>
                 </div>
                 <div className='postButtonright'>
-                  
                     <span className='postCommentText'>4件のコメント</span>
                 </div>
             </div>
