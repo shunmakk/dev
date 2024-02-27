@@ -3,6 +3,9 @@ import React from 'react'
 import './SideBar.css'
 import CloseFriend from '../closeFriend/CloseFriend'
 import { Users } from '../../dummyData'
+// import { Link } from 'react-router-dom';
+
+
 
 
 const SideBar = () => {
@@ -42,7 +45,7 @@ const SideBar = () => {
         <hr  className='sidebarHr'/>
         <ul className='sidebarfriendList'>
          {Users.map((user) => (
-          <CloseFriend  user={user} id={user.id}  />
+          <CloseFriend  user={user} key={user.id}  />
          )) }
         </ul>
       </div>
