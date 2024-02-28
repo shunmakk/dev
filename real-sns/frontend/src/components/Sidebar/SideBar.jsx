@@ -3,7 +3,8 @@ import React from 'react'
 import './SideBar.css'
 import CloseFriend from '../closeFriend/CloseFriend'
 import { Users } from '../../dummyData'
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+
 
 
 
@@ -15,7 +16,9 @@ const SideBar = () => {
         <ul className='sidebarList'>
           <li className='sidebarListItem'>
             <Home className='sidebarIcon' />
+            <Link to="/" style={{textDecoration: "none", color: "black"}}>
             <span className='sidebarListItemText'>ホーム</span>
+            </Link>
           </li>
           <li className='sidebarListItem'>
             <Search className='sidebarIcon' />
@@ -35,7 +38,9 @@ const SideBar = () => {
           </li>
           <li className='sidebarListItem'>
             <Person className='sidebarIcon' />
+            <Link to="/profile/shincode" style={{textDecoration: "none", color: "black"}}>
             <span className='sidebarListItemText'>プロフィール</span>
+            </Link>
           </li>
           <li className='sidebarListItem'>
             <Settings className='sidebarIcon' />

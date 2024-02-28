@@ -5,6 +5,8 @@ import { Users } from '../../dummyData'
 
 const Post = ({post}) => {
 
+    const PUBLIC_FOLDER =  process.env.REACT_APP_PUBLIC_FOLDER;
+
     // const user = Users.filter(user => user.id ===  1);
     // console.log(user[0].username)
 
@@ -25,7 +27,7 @@ const Post = ({post}) => {
         <div className='postWrapper'>
             <div className='postTop'>
               <div className='postTopleft'>
-                <img src={ Users.filter(user => user.id ===  post.id)[0].profilePicture} alt="" className="postProfileImg"/>
+                <img src={PUBLIC_FOLDER + Users.filter(user => user.id ===  post.id)[0].profilePicture} alt="" className="postProfileImg"/>
                 <span className='postUsername'>{ Users.filter(user => user.id ===  post.id)[0].username}</span>
                 <span className='postDate'>{post.date}</span>
             </div>
@@ -35,11 +37,11 @@ const Post = ({post}) => {
             </div>
             <div className='postCenter'>
                 <span className='postText'>{post.desc}</span>
-                <img src={post.photo} alt="" className='postImg'/>
+                <img src={PUBLIC_FOLDER + post.photo} alt="" className='postImg'/>
             </div>
             <div className='postButtom'>
                 <div className='postButtonleft'>
-                    <img src="/assets/heart.png" alt=""  className="likeIcon"  onClick={() => handleLike()}   />
+                    <img src={PUBLIC_FOLDER  + "/heart.png"} alt=""  className="likeIcon"  onClick={() => handleLike()}   />
                     <span className='postlikeCounter'>{like}がいいね押しました</span>
                 </div>
                 <div className='postButtonright'>
