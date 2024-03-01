@@ -10,4 +10,4 @@ export const loginCall = async (user, dispatch) => {
   } catch (err) {
     dispatch({ type: "LOGIN_ERROR", payload: err });
   }
-};
+}
