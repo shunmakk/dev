@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import './Share.css'
 import { Analytics, Face, Gif, Image } from '@mui/icons-material'
 import { AuthContext } from '../../states/AuthContext';
@@ -13,16 +13,38 @@ const Share = () => {
   const {user} = useContext(AuthContext)
 
   const desc = useRef();
+  const [file, setFile] = useState(null);
 
   const handlesubmit =  async (e) => {
     e.preventDefault();
 
     const confirm = window.confirm('投稿してもよろしいでしょうか?')
 
-    if(confirm){const newPost = {
+    if(confirm){
+        
+    const newPost = {
         userId: user._id,
         desc:    desc.current.value
     };
+
+    if(file){
+
+        const data = new FormData();
+        const filename = Date.now() + file.name;
+        data.append("name", filename);
+        data.append("file", file);
+        newPost.img = filename;
+
+        try{
+            //画像APIを叩く
+            await axios.post("/upload" , data);
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
+
 
     try{
         await axios.post("/posts", newPost);
@@ -49,10 +71,11 @@ const Share = () => {
             <hr className="shareHr"/>
             <form className='shareButtons' onSubmit={(e) => handlesubmit(e)}>
                 <div className='shareOptions'>
-                    <div className='shareOption'>
+                    <label className='shareOption' htmlFor='file'>
                         <Image  className='shareIcon' htmlColor='blue' />
                         <span className='shareOptionText'>写真</span>
-                    </div>
+                        <input  type='file'  id="file" accept='.png, .jpeg, .jpg'  style={{display: "none"}} onChange={(e) => setFile(e.target.files[0])} />
+                    </label>
                 </div>
                 <div className='shareOptions'>
                     <div className='shareOption'>
